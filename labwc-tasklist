@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Overview/Exposé-like script tested on labwc 0.93+ to add a cool overlay 
-under the native labwc task switcher.
+Overview/Exposé-like script tested on labwc 0.93+ to add a cool blurred 
+layer under the native labwc task switcher.
 
 - make sure to install: wlrctl and wtype
 - make sure to install the required python dependencies
