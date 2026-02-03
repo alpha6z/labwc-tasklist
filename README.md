@@ -1,2 +1,31 @@
 # labwc-tasklist
-Overview / Exposé script to add a blurred overlay under the native labwc task switcher
+
+Overview/Exposé-like script tested on labwc 0.93+ to add a cool overlay under the native labwc task switcher.
+
+- make sure to install: wlrctl and wtype
+- make sure to install the required python dependencies
+- chmod +x labwc-tasklist.py
+- bind it to a convenient key combo / mouse button (rc.xml on labwc)
+- enjoy!
+
+To prevent this script from showing up in the tasks add this to your rc.xml
+```xml
+<windowRules>
+  <windowRule title="labwc-tasklist">
+    <skipWindowSwitcher>yes</skipWindowSwitcher>
+  </windowRule>
+</windowRules>
+```
+
+If you want to invoke the tasklist overview on a mouse wheel/middle button press just like on mac os, make sure to add this to your rc.xml
+```xml
+<mouse>
+<default />
+<!-- exposee on mouse wheel click -->
+<context name="All">
+  <mousebind button="Middle" action="Press">
+    <action name="Execute" command="labwc-tasklist" />
+  </mousebind>
+</context>
+</mouse>
+```
