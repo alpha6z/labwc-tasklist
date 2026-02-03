@@ -4,7 +4,7 @@ Overview/Exposé-like script tested on labwc 0.93+ to add a cool overlay under t
 
 - make sure to install: wlrctl and wtype
 - make sure to install the required python dependencies
-- chmod +x labwc-tasklist.py
+- chmod +x labwc-tasklist
 - bind it to a convenient key combo / mouse button (rc.xml on labwc)
 - enjoy!
 
