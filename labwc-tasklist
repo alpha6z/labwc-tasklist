@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Overview/Exposé-like script tested on labwc 0.93+ to add a cool blurred 
-layer under the native labwc task switcher.
+Overview/Exposé-like script tested on labwc 0.93+ to add a cool overlay 
+under the native labwc task switcher.
 
 - make sure to install: wlrctl and wtype
 - make sure to install the required python dependencies
@@ -19,7 +19,7 @@ To prevent this script from showing up in the tasks add this to rc.xml
 
 author = "alpha6z"
 license = "GPLv3"
-version = "0.1"
+version = "0.2"
 
 import gi
 import subprocess
@@ -60,6 +60,9 @@ class DimWindow(Gtk.Window):
         )
         self.connect("focus-in-event", self.on_focus_in)
         self.connect("draw", self.on_draw)
+        self.connect("button-press-event", self.on_button_press)
+        self.connect("button-release-event", self.on_button_release)
+        self.connect("key-press-event", self.on_key_press)
 
         self.start_task_manager()
 
@@ -71,6 +74,20 @@ class DimWindow(Gtk.Window):
         cr.paint()
         return False
 
+    def on_button_press(self, widget, event):
+        # close on any mouse button press
+        self.close()
+        return True
+
+    def on_button_release(self, widget, event):
+        # consume release to avoid propagation
+        return True
+
+    def on_key_press(self, widget, event):
+        # close on any key press (including Esc)
+        self.close()
+        return True
+        
     def on_focus_in(self, widget, event):
         # ignore the first focus_in
         if not self._focus_seen:
